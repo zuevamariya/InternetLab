@@ -1,0 +1,29 @@
+@import '../../../variables.scss';
+
+.logo {
+  display: flex;
+}
+
+.ellipseGroup {
+  position: relative;
+  width: 48px;
+}
+
+.ellipseBlue {
+  position: absolute;
+  z-index: 1;
+}
+
+.ellipseGray {
+  position: absolute;
+  left: 14px;
+  z-index: 0;
+}
+
+.label {
+  font-family: 'GraphikLCG';
+  color: $white-color;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}

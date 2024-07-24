@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'GraphikLCG';
+  src: url('~fonts/GraphikLCG-Regular/GraphikLCG-Regular.woff2') format('woff2'),
+       url('~fonts/GraphikLCG-Regular/GraphikLCG-Regular.woff') format('woff'),
+       url('~fonts/GraphikLCG-Regular/GraphikLCG-Regular.ttf') format('truetype'),
+       url('~fonts/GraphikLCG-Regular/GraphikLCG-Regular.eot') format('eot');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GraphikLCG';
+  src: url('~fonts/GraphikLCG-Semibold/GraphikLCG-Semibold.woff2') format('woff2'),
+       url('~fonts/GraphikLCG-Semibold/GraphikLCG-Semibold.woff') format('woff'),
+       url('~fonts/GraphikLCG-Semibold/GraphikLCG-Semibold.ttf') format('truetype'),
+       url('~fonts/GraphikLCG-Semibold/GraphikLCG-Semibold.eot') format('eot');
+  font-weight: 700;
+  font-style: normal;
+}
