@@ -1,0 +1,26 @@
+@import '../../../variables.scss';
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  li {
+    border-top: 1px solid $lightgray-color;
+
+    a {
+      font-family: $font;
+      color: $gray-color;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 32px;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid $lightgray-color;
+    }
+  }
+}
+
