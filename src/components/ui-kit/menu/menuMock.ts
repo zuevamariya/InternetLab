@@ -1,5 +1,6 @@
 export interface MenuProps {
   menuItems: Record<string, string>;
+  className: string;
 }
 
 export const menuItems = {

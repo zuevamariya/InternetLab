@@ -7,7 +7,7 @@ import {ReactComponent as CrossLeft} from "../../../../assets/images/cross_left.
 import {ReactComponent as Arrow} from "../../../../assets/images/menu_item_arrow.svg";
 import clsx from "clsx";
 
-const MenuMobile: FC<MenuProps> = ({ menuItems }) => {
+const MenuMobile: FC<MenuProps> = ({ menuItems, className }) => {
   const[activeLink, setActiveLink] = useState<string | null>(null);
   const[isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -17,7 +17,7 @@ const MenuMobile: FC<MenuProps> = ({ menuItems }) => {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <div>
+    <div className={className}>
       <button 
         className={clsx({
           [styles.button]: true,
@@ -43,7 +43,6 @@ const MenuMobile: FC<MenuProps> = ({ menuItems }) => {
           {Object.entries(menuItems).map(([key, value]) => (
             <li key={key}>
               <a href={`#${key}`}
-                className={activeLink === key ? styles.active : ''}
                 onClick={() => handleClickItem(key)}>
                 {value}
               </a>

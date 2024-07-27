@@ -1,5 +1,80 @@
 @import "../../variables.scss";
 
 .header {
+  font-family: $font;
+  color: $white-color;
+  min-height: 100vh;
   background-color: $blue-color;
+  background-image: url('../../assets/images/header_image.png');
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 64px;
+  text-align: center;
+  max-width: 748px;
+  margin: 0;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: center;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  background-color: $lightgray-color;
+  color: $black-color;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  margin-block-start: 50px;
+}
+
+.menuDesktop {
+  display: block;
+}
+
+.menuMobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .aside {
+    justify-content: space-between;
+  }
+  
+  .menuDesktop {
+    display: none;
+  }
+
+  .menuMobile {
+    display: block;
+  }
 }
