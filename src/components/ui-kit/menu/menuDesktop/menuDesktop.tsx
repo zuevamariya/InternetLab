@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import styles from './menuDesktop.module.scss'
-import { MenuProps } from "../menuMock";
+import { MenuDesktopProps } from "../menuMock";
 
-const MenuDesktop: FC<MenuProps> = ({ menuItems, className }) => {
+const MenuDesktop: FC<MenuDesktopProps> = ({ menuItems }) => {
   const[activeLink, setActiveLink] = useState<string | null>(null);
 
   const handleClickItem = (id: string) => {
@@ -10,7 +10,7 @@ const MenuDesktop: FC<MenuProps> = ({ menuItems, className }) => {
   }
 
   return (
-    <nav className={className}>
+    <nav>
       <ul className={styles.list}>
         {Object.entries(menuItems).map(([key, value]) => (
           <li key={key}>
