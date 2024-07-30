@@ -1,14 +1,4 @@
-type TItems = Record<string, string>;
-
-export interface MenuDesktopProps {
-  menuItems: TItems;
-}
-
-export interface MenuMobileProps {
-  isOpen: boolean;
-  openMenu: () => void;
-  closeMenu: () => void;
-}
+import { TItems } from "./type";
 
 export const menuItems: TItems = {
   how_it_works: 'Как это работает',

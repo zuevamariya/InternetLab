@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import styles from './menuDesktop.module.scss'
-import { MenuDesktopProps } from "../menuMock";
+import { MenuDesktopProps } from "../type";
 
 const MenuDesktop: FC<MenuDesktopProps> = ({ menuItems }) => {
   const[activeLink, setActiveLink] = useState<string | null>(null);

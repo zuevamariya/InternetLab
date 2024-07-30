@@ -4,7 +4,7 @@ import {ReactComponent as MenuSymbol} from "../../../../assets/images/menu_symbo
 import {ReactComponent as CrossRight} from "../../../../assets/images/cross_right.svg";
 import {ReactComponent as CrossLeft} from "../../../../assets/images/cross_left.svg";
 import clsx from "clsx";
-import { MenuMobileProps } from "../menuMock";
+import { MenuMobileProps } from "../type";
 
 const MenuMobile: FC<MenuMobileProps> = ({ isOpen, openMenu, closeMenu }) => {
   
