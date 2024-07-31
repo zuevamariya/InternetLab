@@ -1,5 +1,5 @@
 import Header from "../header/header";
-import HowItWorks from "../main/section1/section1";
+import HowItWorks from "../main/section_how_it_works/section";
 
 const App = () => {
   return (
