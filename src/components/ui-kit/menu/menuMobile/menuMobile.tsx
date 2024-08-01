@@ -12,20 +12,20 @@ const MenuMobile: FC<MenuMobileProps> = ({ isOpen, openMenu, closeMenu }) => {
     <>
       {isOpen ? 
       (<button
-        className={clsx({
-          [styles.button]: true,
-          [styles.cross]: true
-        })}
+        className={clsx(
+          styles.button,
+          styles.cross,
+        )}
         onClick={closeMenu}>
         <CrossRight className={styles.right}/>
         <CrossLeft className={styles.left}/>
       </button>)
       :
       (<button
-        className={clsx({
-          [styles.button]: true,
-          [styles.menu]: true
-        })}
+        className={clsx(
+          styles.button,
+          styles.menu,
+        )}
         onClick={openMenu}>
         <MenuSymbol className={styles.symbol}/>
         <MenuSymbol className={styles.symbol}/>

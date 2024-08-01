@@ -3,16 +3,37 @@ import { CardProps } from "./type";
 import clsx from "clsx";
 import styles from "./card.module.scss";
 
-const Card : FC<CardProps> = ( {title, description, text, image, classNameSuffix } ) => {
+const Card : FC<CardProps> = ( {title, description, text, images, classNameSuffix } ) => {
   return(
-    <li className={`${styles[`card${classNameSuffix}`]}`}>
-      <div className={styles.image}>
-        <img src={image} alt={title} />
+    <div className={clsx(
+      styles.card,
+      classNameSuffix && styles[`card${classNameSuffix}`]
+    )}>
+      {images ? (
+        <div className={styles.imageContainer}>
+        {images && images.map((img, index) => (
+          <img 
+            className={styles[`image${index+1}`]} 
+            key={index} 
+            src={img} 
+            alt={`${title}image${index+1}`} />
+        ))}
       </div>
-      {title}
-      <p className={styles.text}>{text}</p>
-      <p className={styles.description}>{description}</p>
-    </li>
+      )
+      :
+      null}
+      <div className={styles.textContainer}>
+        <h4 className={styles.title}>{title}</h4>
+        {text ? (<p className={styles.text}>{text}</p>) 
+        : 
+        null}
+        <div className={styles.descriptionContainer}>
+          {description.map((desc, index) => (
+            <p key={index} className={styles.description}>{desc}</p>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

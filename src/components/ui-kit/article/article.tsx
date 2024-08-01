@@ -10,10 +10,13 @@ const Article: FC<ArticleProps> = ({ title, card, classNameSuffix }) => {
       <h2 className={styles.title}>{title}</h2>
       <ul className={styles.list}>
         {card.map((cardProps, index) => (
-          <Card 
-          key={index} 
-          {...cardProps} 
-          classNameSuffix={classNameSuffix}/>
+          <li>
+            <Card 
+              key={index} 
+              {...cardProps} 
+              classNameSuffix={classNameSuffix}
+            />
+          </li>
         ))}
       </ul>
     </article>

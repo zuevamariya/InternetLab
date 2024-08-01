@@ -1,22 +1,100 @@
 @import "../../../variables.scss";
 
-.cardHowItWorks {
-  font-size: 16px;
+.title {
   font-weight: 600;
-  line-height: 24px;
   color: inherit;
-  max-width: 280px;
+  margin: 0;
+}
 
-  .image {
+.description {
+  font-weight: 400;
+  color: $darkgray-color;
+}
+
+.cardHowItWorks {
+  display: grid;
+  gap: 10px;
+
+  .title {
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 280px;
+  }
+  
+  .imageContainer {
     width: 72px;
     height: 72px;
   }
 
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
   .description {
-    color: $darkgray-color;
     font-size: 14px;
-    font-weight: 400;
     line-height: 24px;
   }
+
+  @media (max-width: 768px) {
+    .cardHowItWorks {
+      display: flex;
+    }
+  }
 }
+
+
+.cardThirdBlock {
+display: grid;
+align-items: center;
+grid-template-columns: 1fr 1fr;
+gap: 32px;
+
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+    text-align: left;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 28px;
+    text-align: left;
+  }
+
+  .imageContainer {
+    width: 100%;
+    max-width: 582px;
+    aspect-ratio: 4 / 3;
+    order: 2;
+    position: relative;
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image1 {
+      z-index: 0;
+    }
+
+    .image2 {
+      z-index: 1;
+    }
+  }
+
+  @media (max-width: 375px) {
+    display: flex;
+    flex-direction: column;
+
+    .textContainer {
+      order: 2;
+    }
+  }
+}
+
+
 
