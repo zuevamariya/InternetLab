@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.slider {
+  display: flex;
+  gap: 25px;
+}
+
+.button {
+  margin-block-start: 80px;
+  background-color: transparent;
+  border: none;
+}
+
+.points {
+  display: flex;
+  gap: 15px;
+  grid-row: span 1;
+  grid-column: span 3;
+  align-items: center;
+}

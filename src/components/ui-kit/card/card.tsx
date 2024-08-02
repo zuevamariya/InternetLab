@@ -24,15 +24,15 @@ const Card : FC<CardProps> = ( {title, description, text, images, classNameSuffi
       null}
       <div className={styles.textContainer}>
         <h4 className={styles.title}>{title}</h4>
-        {text ? (<p className={styles.text}>{text}</p>) 
-        : 
-        null}
         <div className={styles.descriptionContainer}>
           {description.map((desc, index) => (
             <p key={index} className={styles.description}>{desc}</p>
           ))}
         </div>
       </div>
+      {text ? (<p className={styles.text}>{text}</p>) 
+        : 
+        null}
     </div>
   );
 };

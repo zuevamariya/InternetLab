@@ -19,8 +19,9 @@ const Header: FC = () => {
   const closeMenu = () => setIsOpen(false);
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth < 769);
-    if (window.innerWidth > 768) {
+    const mobileView = window.innerWidth < 769;
+    setIsMobile(mobileView);
+    if (!mobileView) {
       setIsOpen(false);
     }
   };
@@ -33,57 +34,48 @@ const Header: FC = () => {
   }, []);
 
   return (
-    isMobile ? 
-    <div className={clsx({
-      [styles.header]: !isOpen,
-      [styles.headerMobile]: isOpen,
-    })}>
-      <aside className={styles.aside}>
-        <Logo />
-        <MenuMobile
-          isOpen={isOpen}
-          openMenu={openMenu}
-          closeMenu={closeMenu}
-        />
-      </aside>
-      {!isOpen ? (
-        <article className={styles.article}>
-          <h1 className={styles.title}>Говорят, никогда не поздно сменить профессию</h1>
-          <p className={styles.text}>Сделай круто тестовое задание и у тебя получится</p>
-          <button className={styles.button}>Проще простого!</button>
-        </article>
+    <>
+      {isMobile ? (
+        <div className={clsx(isOpen ? styles.headerMobile : styles.header)}>
+          <aside className={styles.aside}>
+            <Logo />
+            <MenuMobile isOpen={isOpen} openMenu={openMenu} closeMenu={closeMenu} />
+          </aside>
+          {isOpen ? (
+            <nav className={clsx(isOpen ? styles.visibility : styles.hidden)}>
+              <ul className={styles.list}>
+                {Object.entries(menuItems).map(([key, value]) => (
+                  <li key={key}>
+                    <a href={`#${key}`} onClick={() => handleClickItem(key)}>
+                      {value}
+                    </a>
+                    <Arrow />
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : (
+            <article className={styles.article}>
+              <h1 className={styles.title}>Говорят, никогда не поздно сменить профессию</h1>
+              <p className={styles.text}>Сделай круто тестовое задание и у тебя получится</p>
+              <button className={styles.button}>Проще простого!</button>
+            </article>
+          )}
+        </div>
       ) : (
-        <nav className={clsx({
-          [styles.visibility]: isOpen,
-          [styles.hidden]: !isOpen,
-        })}>
-          <ul className={styles.list}>
-            {Object.entries(menuItems).map(([key, value]) => (
-              <li key={key}>
-                <a href={`#${key}`} onClick={() => handleClickItem(key)}>
-                  {value}
-                </a>
-                <Arrow />
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className={styles.header}>
+          <aside className={styles.aside}>
+            <Logo />
+            <MenuDesktop menuItems={menuItems} />
+          </aside>
+          <article className={styles.article}>
+            <h1 className={styles.title}>Говорят, никогда не поздно сменить профессию</h1>
+            <p className={styles.text}>Сделай круто тестовое задание и у тебя получится</p>
+            <button className={styles.button}>Проще простого!</button>
+          </article>
+        </div>
       )}
-    </div>
-    :
-    <div className={clsx({
-      [styles.header]: true
-    })}>
-      <aside className={styles.aside}>
-        <Logo />
-        <MenuDesktop menuItems={menuItems} />
-      </aside>
-      <article className={styles.article}>
-        <h1 className={styles.title}>Говорят, никогда не поздно сменить профессию</h1>
-        <p className={styles.text}>Сделай круто тестовое задание и у тебя получится</p>
-        <button className={styles.button}>Проще простого!</button>
-      </article>
-    </div>
+    </>
   );
 };
 

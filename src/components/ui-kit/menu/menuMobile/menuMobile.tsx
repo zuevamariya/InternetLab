@@ -14,7 +14,7 @@ const MenuMobile: FC<MenuMobileProps> = ({ isOpen, openMenu, closeMenu }) => {
       (<button
         className={clsx(
           styles.button,
-          styles.cross,
+          styles.cross
         )}
         onClick={closeMenu}>
         <CrossRight className={styles.right}/>
@@ -24,7 +24,7 @@ const MenuMobile: FC<MenuMobileProps> = ({ isOpen, openMenu, closeMenu }) => {
       (<button
         className={clsx(
           styles.button,
-          styles.menu,
+          styles.menu
         )}
         onClick={openMenu}>
         <MenuSymbol className={styles.symbol}/>
