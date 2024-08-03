@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Article from "../../ui-kit/article/article";
 import { FeedbackProps } from "./articleMock";
 import { ReactComponent as GrayArrowBack } from "../../../assets/images/section3_back-gray.svg";
@@ -11,7 +11,26 @@ import styles from "./section.module.scss";
 
 const Feedback: FC = () => {
   const[currentSlide, setCurrentSlide] = useState<number>(0);
-  const totalSlides = 5;
+  const [cardsPerSlide, setCardsPerSlide] = useState<number>(1);
+
+  const totalCards = FeedbackProps.card.length;
+  const totalSlides = Math.ceil(totalCards / cardsPerSlide);
+
+  const handleResize = () => {
+    if (window.innerWidth <= 375) {
+      setCardsPerSlide(1);
+    } else if (window.innerWidth <= 768) {
+      setCardsPerSlide(2);
+    } else {
+      setCardsPerSlide(3);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handlePrevClick = () => {
     if (currentSlide > 0) setCurrentSlide(currentSlide - 1);
@@ -29,17 +48,19 @@ const Feedback: FC = () => {
       <div className={styles.slider}>
         <button 
           className={styles.button}
-          onClick={handlePrevClick}>
+          onClick={handlePrevClick}
+          disabled={isGrayPrevArrow}>
           {isGrayPrevArrow ? <GrayArrowBack /> : <BlueArrowBack />}
         </button>
         <Article 
           title={FeedbackProps.title} 
-          card={FeedbackProps.card} 
+          card={FeedbackProps.card.slice(currentSlide * cardsPerSlide, (currentSlide + 1) * cardsPerSlide)}
           classNameSuffix={FeedbackProps.classNameSuffix}
         />
         <button 
           className={styles.button}
-          onClick={handleNextClick}>
+          onClick={handleNextClick}
+          disabled={isGrayNextArrow}>
           {isGrayNextArrow ? <GrayArrowNext /> : <BlueArrowNext />}
         </button>
       </div>

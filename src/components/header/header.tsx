@@ -6,40 +6,77 @@ import {menuItems} from "../ui-kit/menu/menuMock";
 import { FC, useEffect, useState } from "react";
 import clsx from "clsx";
 import {ReactComponent as Arrow} from "../../assets/images/menu_item_arrow.svg";
+import { HeaderProps } from "./type";
 
-const Header: FC = () => {
+const Header: FC<HeaderProps> = ({ deviceType }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
   const[, setActiveLink] = useState<string | null>(null);
+  const desktop = deviceType === "desktop";
+  const tablet = deviceType === "tablet";
+  const mobile = deviceType === "mobile" || "smallMobile";
 
   const handleClickItem = (id: string) => {
     setActiveLink(id);
-  }
+  };
+
   const openMenu = () => setIsOpen(true);
   const closeMenu = () => setIsOpen(false);
 
-  const handleResize = () => {
-    const mobileView = window.innerWidth < 769;
-    setIsMobile(mobileView);
-    if (!mobileView) {
-      setIsOpen(false);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    if (desktop) {
+      setIsOpen(false);
     };
-  }, []);
+  }, [deviceType]);
 
   return (
     <>
-      {isMobile ? (
-        <div className={clsx(isOpen ? styles.headerMobile : styles.header)}>
-          <aside className={styles.aside}>
+      {desktop ? (
+        <div className={clsx(
+          styles.header, 
+          styles.headerDesktop
+        )}>
+          <aside className={clsx(
+            styles.aside,
+            styles.asideDesktop
+          )}>
             <Logo />
-            <MenuMobile isOpen={isOpen} openMenu={openMenu} closeMenu={closeMenu} />
+            <MenuDesktop menuItems={menuItems} />
+          </aside>
+          <article className={styles.article}>
+            <h1 className={clsx(
+              styles.title,
+              styles.titleDesktop
+            )}>
+              Говорят, никогда не поздно сменить профессию
+            </h1>
+            <p className={clsx(
+              styles.text,
+              styles.textDesktop
+            )}>
+              Сделай круто тестовое задание и у тебя получится
+            </p>
+            <button className={styles.button}>
+              Проще простого!
+            </button>
+          </article>
+        </div>
+      ) : (
+        <div className={clsx({
+          [styles.header]: !isOpen,
+          [styles.headerDropDown]: isOpen,
+          [styles.headerTablet]: !isOpen && tablet,
+          [styles.headerMobile]: !isOpen && mobile
+        })}>
+          <aside className={clsx(
+            styles.aside,
+            styles.asideOther
+          )}>
+            <Logo />
+            <MenuMobile 
+              isOpen={isOpen} 
+              openMenu={openMenu} 
+              closeMenu={closeMenu} 
+            />
           </aside>
           {isOpen ? (
             <nav className={clsx(isOpen ? styles.visibility : styles.hidden)}>
@@ -56,23 +93,24 @@ const Header: FC = () => {
             </nav>
           ) : (
             <article className={styles.article}>
-              <h1 className={styles.title}>Говорят, никогда не поздно сменить профессию</h1>
-              <p className={styles.text}>Сделай круто тестовое задание и у тебя получится</p>
-              <button className={styles.button}>Проще простого!</button>
+              <h1 className={clsx({
+                [styles.title]: true,
+                [styles.titleTablet]: tablet,
+                [styles.titleMobile]: mobile
+              })}>
+                Говорят, никогда не поздно сменить профессию
+              </h1>
+              <p className={clsx(
+                styles.text,
+                styles.textOther
+              )}>
+                Сделай круто тестовое задание и у тебя получится
+              </p>
+              <button className={styles.button}>
+                Проще простого!
+              </button>
             </article>
           )}
-        </div>
-      ) : (
-        <div className={styles.header}>
-          <aside className={styles.aside}>
-            <Logo />
-            <MenuDesktop menuItems={menuItems} />
-          </aside>
-          <article className={styles.article}>
-            <h1 className={styles.title}>Говорят, никогда не поздно сменить профессию</h1>
-            <p className={styles.text}>Сделай круто тестовое задание и у тебя получится</p>
-            <button className={styles.button}>Проще простого!</button>
-          </article>
         </div>
       )}
     </>
