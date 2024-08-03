@@ -1,14 +1,26 @@
 import { FC, useEffect, useState } from "react";
 import Header from "../header/header";
 import Main from "../main/main";
+import { TDevice } from "./type";
 
 const App: FC = () => {
-  const[screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
+  const[_, setScreenWidth] = useState<number>(window.innerWidth);
   const[deviceType, setDeviceType] = useState<string>('desktop');
+
+  const device: TDevice = {
+    isDesktop: deviceType === "desktop",
+    isTablet: deviceType === "tablet",
+    isMobile: deviceType === "mobile",
+    isSmallMobile: deviceType === "smallMobile",
+    isMobileOrTablet: deviceType === "tablet" || 
+                      deviceType === "mobile" || 
+                      deviceType === "smallMobile",
+    isMobiles: deviceType === "mobile" || deviceType === "smallMobile"
+  }
 
   const handleResize = () => {
     const width = window.innerWidth;
-    setScreenWidth(window.innerWidth);
+    setScreenWidth(width);
 
     if (width >= 1024) {
       setDeviceType('desktop');
@@ -23,6 +35,7 @@ const App: FC = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
+    handleResize();
     return() => {
       window.removeEventListener('resize', handleResize);
     };
@@ -30,8 +43,8 @@ const App: FC = () => {
 
   return (
     <>
-      <Header deviceType={deviceType}/>
-      <Main />
+      <Header deviceType={device}/>
+      <Main deviceType={device}/>
     </> 
   )
 }

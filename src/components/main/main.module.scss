@@ -1,20 +1,19 @@
 @import "../../variables.scss";
 
-.container {
+.itemDesktop {
+  max-width: 1216px;
+  margin: 40px auto;
+}
 
-  .item {
-    max-width: 1216px;
-    margin: 40px auto;
-  }
+.itemTablet {
+  margin: 20px 10px;
+}
 
-  .itemColor {
-    background-color: $extralightgray-color;
-    padding-block: 40px;
-    margin: 40px auto;
-  }
+.itemMobile {
+  margin: 15px 5px;
+}
 
-  @media (max-width: 768px) {
-    margin-inline: 10px;
-  }
-  
+.itemColor {
+  background-color: $extralightgray-color;
+  padding-block: 10px;
 }

@@ -11,9 +11,6 @@ import { HeaderProps } from "./type";
 const Header: FC<HeaderProps> = ({ deviceType }) => {
   const [isOpen, setIsOpen] = useState(false);
   const[, setActiveLink] = useState<string | null>(null);
-  const desktop = deviceType === "desktop";
-  const tablet = deviceType === "tablet";
-  const mobile = deviceType === "mobile" || "smallMobile";
 
   const handleClickItem = (id: string) => {
     setActiveLink(id);
@@ -23,14 +20,14 @@ const Header: FC<HeaderProps> = ({ deviceType }) => {
   const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
-    if (desktop) {
+    if (deviceType.isDesktop) {
       setIsOpen(false);
     };
   }, [deviceType]);
 
   return (
     <>
-      {desktop ? (
+      {deviceType.isDesktop ? (
         <div className={clsx(
           styles.header, 
           styles.headerDesktop
@@ -64,8 +61,8 @@ const Header: FC<HeaderProps> = ({ deviceType }) => {
         <div className={clsx({
           [styles.header]: !isOpen,
           [styles.headerDropDown]: isOpen,
-          [styles.headerTablet]: !isOpen && tablet,
-          [styles.headerMobile]: !isOpen && mobile
+          [styles.headerTablet]: !isOpen && deviceType.isTablet,
+          [styles.headerMobile]: !isOpen && deviceType.isMobiles
         })}>
           <aside className={clsx(
             styles.aside,
@@ -95,8 +92,8 @@ const Header: FC<HeaderProps> = ({ deviceType }) => {
             <article className={styles.article}>
               <h1 className={clsx({
                 [styles.title]: true,
-                [styles.titleTablet]: tablet,
-                [styles.titleMobile]: mobile
+                [styles.titleTablet]: deviceType.isTablet,
+                [styles.titleMobile]: deviceType.isMobiles
               })}>
                 Говорят, никогда не поздно сменить профессию
               </h1>
