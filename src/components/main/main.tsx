@@ -7,53 +7,34 @@ import { FC } from "react";
 import clsx from "clsx";
 
 const Main:FC<MainProps> = ({ deviceType }) => {
+  const style = {
+    [styles.itemDesktop]: deviceType.isDesktop,
+    [styles.itemTablet]: deviceType.isTablet,
+    [styles.itemMobile]: deviceType.isMobiles
+  }
 
   return (
     <ul className={styles.container}>
-      <li className={clsx({
-        [styles.itemDesktop]: deviceType.isDesktop,
-        [styles.itemTablet]: deviceType.isTablet,
-        [styles.itemMobile]: deviceType.isMobiles
-      })}>
+      <li className={clsx(style)}>
         <HowItWorks />
       </li>
-      <li className={clsx({
-        [styles.itemDesktop]: deviceType.isDesktop,
-        [styles.itemTablet]: deviceType.isTablet,
-        [styles.itemMobile]: deviceType.isMobiles
-      })}>
+      <li className={clsx(style)}>
         <ThirdBlock />
       </li>
       <li className={styles.itemColor}>
-        <div className={clsx({
-        [styles.itemDesktop]: deviceType.isDesktop,
-        [styles.itemTablet]: deviceType.isTablet,
-        [styles.itemMobile]: deviceType.isMobiles
-      })}>
+        <div className={clsx(style)}>
           <Feedback />
         </div>
       </li>
-      <li className={clsx({
-        [styles.itemDesktop]: deviceType.isDesktop,
-        [styles.itemTablet]: deviceType.isTablet,
-        [styles.itemMobile]: deviceType.isMobiles
-      })}>
+      <li className={clsx(style)}>
         //
       </li>
       <li className={styles.itemColor}>
-        <div className={clsx({
-        [styles.itemDesktop]: deviceType.isDesktop,
-        [styles.itemTablet]: deviceType.isTablet,
-        [styles.itemMobile]: deviceType.isMobiles
-      })}>
+        <div className={clsx(style)}>
           //
         </div>
       </li>
-      <li className={clsx({
-        [styles.itemDesktop]: deviceType.isDesktop,
-        [styles.itemTablet]: deviceType.isTablet,
-        [styles.itemMobile]: deviceType.isMobiles
-      })}>
+      <li className={clsx(style)}>
         //
       </li>
     </ul> 
