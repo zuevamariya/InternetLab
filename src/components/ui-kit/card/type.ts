@@ -1,6 +1,4 @@
-import { ReactElement } from "react";
-
-export interface CardProps {
+export type CardProps = {
   title: string,
   description: string[],
   text?: string,

@@ -2,9 +2,13 @@ import Feedback from "./section_feedback/section";
 import HowItWorks from "./section_how_it_works/section";
 import ThirdBlock from "./section_third_block/section";
 import styles from "./main.module.scss";
-import { MainProps } from "./type";
 import { FC } from "react";
 import clsx from "clsx";
+import { TDevice } from "../app/app";
+
+export type MainProps = {
+  deviceType: TDevice;
+}
 
 const Main:FC<MainProps> = ({ deviceType }) => {
   const style = {

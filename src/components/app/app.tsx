@@ -1,7 +1,15 @@
 import { FC, useEffect, useState } from "react";
 import Header from "../header/header";
 import Main from "../main/main";
-import { TDevice } from "./type";
+
+export type TDevice = {
+  isDesktop: boolean;
+  isTablet: boolean;
+  isMobile: boolean;
+  isSmallMobile: boolean;
+  isMobileOrTablet: boolean;
+  isMobiles: boolean;
+}
 
 const App: FC = () => {
   const[_, setScreenWidth] = useState<number>(window.innerWidth);

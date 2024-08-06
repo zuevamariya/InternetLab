@@ -6,7 +6,11 @@ import {menuItems} from "../ui-kit/menu/menuMock";
 import { FC, useEffect, useState } from "react";
 import clsx from "clsx";
 import {ReactComponent as Arrow} from "../../assets/images/menu_item_arrow.svg";
-import { HeaderProps } from "./type";
+import { TDevice } from "../app/app";
+
+export type HeaderProps = {
+  deviceType: TDevice;
+}
 
 const Header: FC<HeaderProps> = ({ deviceType }) => {
   const [isOpen, setIsOpen] = useState(false);

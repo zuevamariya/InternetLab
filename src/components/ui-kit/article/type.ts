@@ -1,6 +1,6 @@
 import { CardProps } from "../card/type";
 
-export interface ArticleProps {
+export type ArticleProps = {
   title: string,
   card: CardProps[],
   classNameSuffix: string,

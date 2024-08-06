@@ -1,10 +1,10 @@
 export type TItems = Record<string, string>;
 
-export interface MenuDesktopProps {
+export type MenuDesktopProps = {
   menuItems: TItems;
 }
 
-export interface MenuMobileProps {
+export type MenuMobileProps = {
   isOpen: boolean;
   openMenu: () => void;
   closeMenu: () => void;
