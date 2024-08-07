@@ -4,7 +4,7 @@ import Image2 from "../../../assets/images/section1_2.png";
 import Image3 from "../../../assets/images/section1_3.png";
 import Image4 from "../../../assets/images/section1_4.png";
 
-export const HowItWorksCard: CardProps[] = [
+const HowItWorksCard: CardProps[] = [
   { 
     title: "Прочитай задание внимательно", 
     description: ["Думаю у тебя не займет это больше двух-трех минут"],
@@ -28,3 +28,11 @@ export const HowItWorksCard: CardProps[] = [
     images: [Image4],
   },
 ];
+
+const HowItWorksData = {
+  title: "Как это работает",
+  card: HowItWorksCard,
+  classNameSuffix: "HowItWorks",
+};
+
+export default HowItWorksData;

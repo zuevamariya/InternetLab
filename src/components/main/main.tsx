@@ -4,17 +4,15 @@ import ThirdBlock from "./section_third_block/section";
 import styles from "./main.module.scss";
 import { FC } from "react";
 import clsx from "clsx";
-import { TDevice } from "../app/app";
+import { RootState, useSelector } from "../../services/store";
 
-export type MainProps = {
-  deviceType: TDevice;
-}
+const Main: FC = () => {
+  const device = useSelector((state: RootState) => state.device);
 
-const Main:FC<MainProps> = ({ deviceType }) => {
   const style = {
-    [styles.itemDesktop]: deviceType.isDesktop,
-    [styles.itemTablet]: deviceType.isTablet,
-    [styles.itemMobile]: deviceType.isMobiles
+    [styles.itemDesktop]: device.isDesktop,
+    [styles.itemTablet]: device.isTablet,
+    [styles.itemMobile]: device.isMobile,
   }
 
   return (
@@ -43,6 +41,6 @@ const Main:FC<MainProps> = ({ deviceType }) => {
       </li>
     </ul> 
   )
-}
+};
 
 export default Main;

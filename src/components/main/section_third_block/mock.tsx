@@ -2,7 +2,7 @@ import { CardProps } from "../../ui-kit/card/type";
 import Background from "../../../assets/images/section2_background.png";
 import Image from "../../../assets/images/section2_image.png";
 
-export const ThirdBlockCard: CardProps = {
+const ThirdBlockCard: CardProps = {
   title: "Круто, ты дошел до третьего блока",
   description: [
     `63% опрошенных пользовались кредитами из-за того, что не могли покрыть 
@@ -11,4 +11,6 @@ export const ThirdBlockCard: CardProps = {
     экономить деньги на процентах и штрафах.`],
   images: [Background, Image],
   classNameSuffix: "ThirdBlock"
-}
+};
+
+export default ThirdBlockCard;

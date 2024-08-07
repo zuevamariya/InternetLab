@@ -6,15 +6,12 @@ import {menuItems} from "../ui-kit/menu/menuMock";
 import { FC, useEffect, useState } from "react";
 import clsx from "clsx";
 import {ReactComponent as Arrow} from "../../assets/images/menu_item_arrow.svg";
-import { TDevice } from "../app/app";
+import { RootState, useSelector } from "../../services/store";
 
-export type HeaderProps = {
-  deviceType: TDevice;
-}
-
-const Header: FC<HeaderProps> = ({ deviceType }) => {
+const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const[, setActiveLink] = useState<string | null>(null);
+  const device = useSelector((state: RootState) => state.device);
 
   const handleClickItem = (id: string) => {
     setActiveLink(id);
@@ -24,14 +21,14 @@ const Header: FC<HeaderProps> = ({ deviceType }) => {
   const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
-    if (deviceType.isDesktop) {
+    if (device.isDesktop) {
       setIsOpen(false);
     };
-  }, [deviceType]);
+  }, [device]);
 
   return (
     <>
-      {deviceType.isDesktop ? (
+      {device.isDesktop ? (
         <div className={clsx(
           styles.header, 
           styles.headerDesktop
@@ -65,8 +62,8 @@ const Header: FC<HeaderProps> = ({ deviceType }) => {
         <div className={clsx({
           [styles.header]: !isOpen,
           [styles.headerDropDown]: isOpen,
-          [styles.headerTablet]: !isOpen && deviceType.isTablet,
-          [styles.headerMobile]: !isOpen && deviceType.isMobiles
+          [styles.headerTablet]: !isOpen && device.isTablet,
+          [styles.headerMobile]: !isOpen && device.isMobile
         })}>
           <aside className={clsx(
             styles.aside,
@@ -96,8 +93,8 @@ const Header: FC<HeaderProps> = ({ deviceType }) => {
             <article className={styles.article}>
               <h1 className={clsx({
                 [styles.title]: true,
-                [styles.titleTablet]: deviceType.isTablet,
-                [styles.titleMobile]: deviceType.isMobiles
+                [styles.titleTablet]: device.isTablet,
+                [styles.titleMobile]: device.isMobile
               })}>
                 Говорят, никогда не поздно сменить профессию
               </h1>

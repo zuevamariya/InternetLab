@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Card from "../../ui-kit/card/card";
-import { ThirdBlockCard } from "./cardMock";
+import ThirdBlockCard from "./mock";
 
 const ThirdBlock: FC = () => {
   return(

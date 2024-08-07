@@ -3,25 +3,36 @@ import { ArticleProps } from "./type";
 import Card from "../card/card";
 import clsx from "clsx";
 import styles from "./article.module.scss";
+import { RootState, useSelector } from "../../../services/store";
 
 const Article: FC<ArticleProps> = ({ title, card, classNameSuffix }) => {
+  const device = useSelector((state: RootState) => state.device);
+
   return (
     <article className={clsx(
       styles.article,
       styles[`article${classNameSuffix}`]
     )}>
-      <h2 className={styles.title}>{title}</h2>
-      <ul className={styles.list}>
+      <h2 className={clsx({
+        [styles.title]: true,
+        [styles.titleDesktop]: device.isDesktop,
+        [styles.titleMobile]: device.isMobile
+      })}>
+        {title}
+      </h2>
+      <div className={clsx({
+        [styles.listDesktop]: device.isDesktop,
+        [styles.listTablet]: device.isTablet,
+        [styles.listMobile]: device.isMobile
+      })}>
         {card.map((cardProps, index) => (
-          <li>
             <Card 
               key={index} 
               {...cardProps} 
               classNameSuffix={classNameSuffix}
             />
-          </li>
         ))}
-      </ul>
+      </div>
     </article>
   );
 };

@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import deviceReducer from "./device/device-slice";
 
 import {
   TypedUseSelectorHook,
@@ -6,7 +7,9 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 
-export const rootReducer = combineReducers({});
+export const rootReducer = combineReducers({
+  device: deviceReducer,
+});
 
 const store = configureStore({
   reducer: rootReducer

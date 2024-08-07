@@ -3,7 +3,7 @@ import User1 from "../../../assets/images/section3_user1.png";
 import User2 from "../../../assets/images/section3_user2.png";
 import User3 from "../../../assets/images/section3_user3.png";
 
-export const FeedbackCard: CardProps[] = [
+const FeedbackCard: CardProps[] = [
   { 
     title: "Константинов Михаил Павлович", 
     text: `Каждый из нас понимает очевидную вещь: перспективное 
@@ -58,4 +58,12 @@ export const FeedbackCard: CardProps[] = [
     description: ["Самара"],
     images: [User3],
   }
-]
+];
+
+const FeedbackData = {
+  title: "Отзывы",
+  card: FeedbackCard,
+  classNameSuffix: "Feedback",
+};
+
+export default FeedbackData;
