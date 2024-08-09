@@ -4,7 +4,7 @@ import HowItWorksData from "./mock";
 
 const HowItWorks: FC = () => {
   return(
-    <Article 
+    <Article
       title={HowItWorksData.title} 
       card={HowItWorksData.card} 
       classNameSuffix={HowItWorksData.classNameSuffix}

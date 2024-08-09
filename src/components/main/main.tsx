@@ -8,19 +8,19 @@ import { RootState, useSelector } from "../../services/store";
 
 const Main: FC = () => {
   const device = useSelector((state: RootState) => state.device);
+  const other = device.isTablet || device.isMobile || device.isSmallMobile;
 
   const style = {
     [styles.itemDesktop]: device.isDesktop,
-    [styles.itemTablet]: device.isTablet,
-    [styles.itemMobile]: device.isMobile,
+    [styles.itemOther]: other
   }
 
   return (
     <ul className={styles.container}>
-      <li className={clsx(style)}>
+      <li id="how_it_works" className={clsx(style)}>
         <HowItWorks />
       </li>
-      <li className={clsx(style)}>
+      <li id="third_block" className={clsx(style)}>
         <ThirdBlock />
       </li>
       <li className={styles.itemColor}>
@@ -28,7 +28,7 @@ const Main: FC = () => {
           <Feedback />
         </div>
       </li>
-      <li className={clsx(style)}>
+      <li id="questions_and_answers" className={clsx(style)}>
         //
       </li>
       <li className={styles.itemColor}>
@@ -36,7 +36,7 @@ const Main: FC = () => {
           //
         </div>
       </li>
-      <li className={clsx(style)}>
+      <li id="form" className={clsx(style)}>
         //
       </li>
     </ul> 

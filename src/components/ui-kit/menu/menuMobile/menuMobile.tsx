@@ -1,36 +1,30 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from './menuMobile.module.scss'
-import {ReactComponent as MenuSymbol} from "../../../../assets/images/menu_symbol.svg";
-import {ReactComponent as CrossRight} from "../../../../assets/images/cross_right.svg";
-import {ReactComponent as CrossLeft} from "../../../../assets/images/cross_left.svg";
+import {ReactComponent as Arrow} from "../../../../assets/images/menu_item_arrow.svg";
 import clsx from "clsx";
 import { MenuMobileProps } from "../type";
 
-const MenuMobile: FC<MenuMobileProps> = ({ isOpen, openMenu, closeMenu }) => {
+const MenuMobile: FC<MenuMobileProps> = ({ 
+  isOpen, 
+  menuItems, 
+  handleClickItem 
+}) => {
   
   return (
-    <>
-      {isOpen ? 
-      (<button
-        className={clsx(
-          styles.button,
-          styles.cross
-        )}
-        onClick={closeMenu}>
-        <CrossRight className={styles.right}/>
-        <CrossLeft className={styles.left}/>
-      </button>)
-      :
-      (<button
-        className={clsx(
-          styles.button,
-          styles.menu
-        )}
-        onClick={openMenu}>
-        <MenuSymbol className={styles.symbol}/>
-        <MenuSymbol className={styles.symbol}/>
-      </button>)}
-    </>
+    isOpen && (
+      <nav className={clsx(isOpen ? styles.visibility : styles.hidden)}>
+        <ul className={styles.list}>
+          {Object.entries(menuItems).map(([key, value]) => (
+            <li key={key} onClick={() => handleClickItem(key)}>
+              <a href={`#${key}`}>
+                {value}
+              </a>
+              <Arrow />
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
   );
 };
 

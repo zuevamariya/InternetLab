@@ -10,12 +10,32 @@
   color: $darkgray-color;
 }
 
-.cardHowItWorks {
+.cardHowItWorksDesktop {
   display: grid;
+}
+
+.cardHowItWorksOther {
+  display: flex;
+}
+
+.cardHowItWorks {
   gap: 10px;
 
   .textContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textContainerDesktop {
     max-width: 280px;
+  }
+
+  .textContainerOther {
+    max-width: 270px;
+  }
+
+  .textContainerSmallMobile {
+    max-width: 216px;
   }
 
   .title {
@@ -23,34 +43,42 @@
     line-height: 24px;
   }
   
-  .imageContainer {
+  .imageContainerDesktop {
     width: 72px;
     height: 72px;
   }
 
-  .textContainer {
-    display: flex;
-    flex-direction: column;
+  .imageContainerOther {
+    width: 56px;
+    height: 56px;
   }
 
   .description {
     font-size: 14px;
     line-height: 24px;
   }
+}
 
-  @media (max-width: 768px) {
-    display: flex;
+.cardThirdBlockDesktop,
+.cardThirdBlockTablet {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
 
-    .textContainer {
-      max-width: 270px;
-    }
+.cardThirdBlockMobile,
+.cardThirdBlockSmallMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .textContainer {
+    text-align: center;
+    order: 2;
   }
 }
 
 .cardThirdBlock {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
   gap: 32px;
 
   .textContainer {
@@ -92,15 +120,6 @@
 
     .image2 {
       z-index: 1;
-    }
-  }
-
-  @media (max-width: 375px) {
-    display: flex;
-    flex-direction: column;
-
-    .textContainer {
-      order: 2;
     }
   }
 }
