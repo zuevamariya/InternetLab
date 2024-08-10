@@ -5,6 +5,7 @@ import styles from "./main.module.scss";
 import { FC } from "react";
 import clsx from "clsx";
 import { RootState, useSelector } from "../../services/store";
+import QuestionsAndAnswers from "./section_questions_and_answers/section";
 
 const Main: FC = () => {
   const device = useSelector((state: RootState) => state.device);
@@ -29,7 +30,7 @@ const Main: FC = () => {
         </div>
       </li>
       <li id="questions_and_answers" className={clsx(style)}>
-        //
+        <QuestionsAndAnswers/>
       </li>
       <li className={styles.itemColor}>
         <div className={clsx(style)}>

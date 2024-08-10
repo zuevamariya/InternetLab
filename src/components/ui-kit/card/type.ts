@@ -4,4 +4,5 @@ export type CardProps = {
   text?: string,
   images?: string[],
   classNameSuffix?: string,
+  button?: boolean,
 }

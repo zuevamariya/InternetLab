@@ -10,6 +10,11 @@
   color: $darkgray-color;
 }
 
+.button {
+  border: none;
+  background-color: transparent;
+}
+
 .cardHowItWorksDesktop {
   display: grid;
 }
@@ -173,5 +178,57 @@
   }
 }
 
+.cardQuestionsAndAnswersMobile:first-child,
+.cardQuestionsAndAnswersSmallMobile:first-child {
+  border-block-start: none;
+}
+
+.cardQuestionsAndAnswersDesktop,
+.cardQuestionsAndAnswersTablet {
+  gap: 30px;
+}
+
+.cardQuestionsAndAnswersMobile,
+.cardQuestionsAndAnswersSmallMobile {
+  gap: 15px;
+}
+
+.cardQuestionsAndAnswers {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  border-block-start: 1px solid $lightgray-color;
+  padding-block: 20px;
+  width: 100%;
+
+  .textContainer {
+    display: grid;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  .descQuestionsAndAnswers {
+    display: none;
+  }
+
+  .image2 {
+    display: none;
+  }
+
+  .hover {
+    color: $blue-color;
+  }
+}
 
 
