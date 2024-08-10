@@ -26,7 +26,7 @@ const Card : FC<CardProps> = ( {title, description, text, images, classNameSuffi
     })}
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}>
-      {images ? (
+      {images && (
         <div className={clsx({
           [styles.imageContainer]: true,
           [styles.imageContainerDesktop]: device.isDesktop,
@@ -40,7 +40,7 @@ const Card : FC<CardProps> = ( {title, description, text, images, classNameSuffi
             alt={`${title}image${index+1}`} />
         ))}
         </div>
-      ) : null}
+      )}
       <div className={clsx({
         [styles.textContainer]: true,
         [styles.textContainerDesktop]: device.isDesktop,
@@ -53,26 +53,24 @@ const Card : FC<CardProps> = ( {title, description, text, images, classNameSuffi
         })}>
           {title}
         </h4>
-        <div className={clsx({
+        {description && <div className={clsx({
           [styles.descriptionContainer]: true,
           [styles[`desc${classNameSuffix}`]]: !isOpen
           })}>
           {description.map((desc, index) => (
             <p key={index} className={styles.description}>{desc}</p>
           ))}
-        </div>
+        </div>}
       </div>
-      {text && (<p className={styles.text}>{text}</p>)}
-      {button && (
-        <button 
+      {text && <p className={styles.text}>{text}</p>}
+      {button && <button 
           className={clsx({
             [styles.button]: true,
             [styles.hover]: isHovered
           })}
           onClick={isOpen ? closeItem : openItem}>
           {isOpen ? <Cross /> : <Plus />}
-        </button>
-      )}
+        </button>}
     </div>
   );
 };

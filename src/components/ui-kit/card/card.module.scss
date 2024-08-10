@@ -231,4 +231,20 @@
   }
 }
 
+.cardCreditInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .title {
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  .text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+}
 

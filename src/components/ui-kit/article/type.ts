@@ -1,7 +1,7 @@
 import { CardProps } from "../card/type";
 
 export type ArticleProps = {
-  title: string,
+  title?: string,
   card: CardProps[],
   classNameSuffix: string,
 }
