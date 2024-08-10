@@ -46,19 +46,21 @@
 }
 
 .articleFeedback {
+  .list {
+    display: grid;
+  }
+
   .listDesktop {
-    display: flex;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
 
   .listTablet {
-    display: grid;
     gap: 20px;
     grid-template-columns: 1fr 1fr;
   }
 
   .listMobile {
-    display: grid;
     grid-template-columns: 1fr;
   }
 }

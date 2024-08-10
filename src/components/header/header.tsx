@@ -2,7 +2,7 @@ import Logo from "../ui-kit/logo/logo";
 import styles from "../header/header.module.scss";
 import MenuDesktop from "../ui-kit/menu/menuDesktop/menuDesktop";
 import MenuMobile from "../ui-kit/menu/menuMobile/menuMobile";
-import {menuItems} from "../ui-kit/menu/menuMock";
+import {menuItems} from "../ui-kit/menu/data";
 import { FC, useEffect, useState } from "react";
 import {ReactComponent as MenuSymbol} from "../../assets/images/menu_symbol.svg";
 import {ReactComponent as CrossRight} from "../../assets/images/cross_right.svg";

@@ -124,18 +124,30 @@
   }
 }
 
+.cardFeedbackDesktop,
+.cardFeedbackTablet {
+  height: 316px;
+}
+
+.cardFeedbackMobile,
+.cardFeedbackSmallMobile {
+  height: 100%;
+}
+
 .cardFeedback {
+  cursor: pointer;
   display: grid;
   grid-template-columns: min-content 1fr;
   grid-template-rows: min-content 1fr;
   gap: 10px;
-  height: 316px;
   max-width: 341px;
   background-color: $white-color;
-  padding: 20px;
+  padding: 15px;
+  margin-block-end: 20px;
 
   .textContainer {
     display: grid;
+    gap: 7px;
   }
 
   .title {

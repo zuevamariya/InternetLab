@@ -21,6 +21,7 @@ const Article: FC<ArticleProps> = ({ title, card, classNameSuffix }) => {
         {title}
       </h2>
       <div className={clsx({
+        [styles.list]: true,
         [styles.listDesktop]: device.isDesktop,
         [styles.listTablet]: device.isTablet,
         [styles.listMobile]: device.isMobile

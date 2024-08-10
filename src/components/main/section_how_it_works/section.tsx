@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Article from "../../ui-kit/article/article";
-import HowItWorksData from "./mock";
+import HowItWorksData from "./data";
 
 const HowItWorks: FC = () => {
   return(
