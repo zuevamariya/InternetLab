@@ -1,5 +1,7 @@
+import { ReactElement } from "react"
+
 export type CardProps = {
-  title: string,
+  title?: string,
   description?: string[],
   text?: string,
   images?: string[],

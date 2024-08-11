@@ -3,6 +3,7 @@ import Header from "../header/header";
 import Main from "../main/main";
 import { useDispatch } from "../../services/store";
 import { setDeviceType } from "../../services/device/device-slice";
+import Footer from "../footer/footer";
 
 
 
@@ -28,6 +29,7 @@ const App: FC = () => {
     <>
       <Header />
       <Main />
+      <Footer />
     </> 
   )
 }

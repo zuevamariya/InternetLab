@@ -21,7 +21,7 @@ const Article: FC<ArticleProps> = ({ title, card, classNameSuffix }) => {
       })}>
         {title}
       </h2>)}
-      <div className={clsx({
+      {card && (<div className={clsx({
         [styles.list]: true,
         [styles.listDesktop]: device.isDesktop,
         [styles.listTablet]: device.isTablet,
@@ -35,7 +35,7 @@ const Article: FC<ArticleProps> = ({ title, card, classNameSuffix }) => {
               classNameSuffix={classNameSuffix}
             />
         ))}
-      </div>
+      </div>)}
     </article>
   );
 };

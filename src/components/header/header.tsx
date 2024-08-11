@@ -34,7 +34,7 @@ const Header: FC = () => {
   }, [device]);
 
   return (
-    <>
+    <header>
       {device.isDesktop ? (
         <div className={clsx(
           styles.header, 
@@ -129,7 +129,7 @@ const Header: FC = () => {
             </article>
         </div>
       )}
-    </>
+    </header>
   );
 };
 

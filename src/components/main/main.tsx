@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { RootState, useSelector } from "../../services/store";
 import QuestionsAndAnswers from "./section_questions_and_answers/section";
 import CreditInfo from "./section_credit_info/section";
+import FormBlock from "./section_form_block/section";
 
 const Main: FC = () => {
   const device = useSelector((state: RootState) => state.device);
@@ -18,30 +19,30 @@ const Main: FC = () => {
   }
 
   return (
-    <ul className={styles.container}>
-      <li id="how_it_works" className={clsx(style)}>
+    <main className={styles.container}>
+      <section id="how_it_works" className={clsx(style)}>
         <HowItWorks />
-      </li>
-      <li id="third_block" className={clsx(style)}>
+      </section>
+      <section id="third_block" className={clsx(style)}>
         <ThirdBlock />
-      </li>
-      <li className={styles.itemColor}>
+      </section>
+      <section className={styles.itemColor}>
         <div className={clsx(style)}>
           <Feedback />
         </div>
-      </li>
-      <li id="questions_and_answers" className={clsx(style)}>
+      </section>
+      <section id="questions_and_answers" className={clsx(style)}>
         <QuestionsAndAnswers/>
-      </li>
-      <li className={styles.itemColor}>
+      </section>
+      <section className={styles.itemColor}>
         <div className={clsx(style)}>
           <CreditInfo />
         </div>
-      </li>
-      <li id="form" className={clsx(style)}>
-        //
-      </li>
-    </ul> 
+      </section>
+      <section id="form" className={clsx(style)}>
+        <FormBlock />
+      </section>
+    </main> 
   )
 };
 

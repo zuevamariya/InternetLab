@@ -32,45 +32,51 @@ const Card : FC<CardProps> = ( {title, description, text, images, classNameSuffi
           [styles.imageContainerDesktop]: device.isDesktop,
           [styles.imageContainerOther]: other
         })}>
-        {images && images.map((img, index) => (
+        {images.map((img, index) => (
           <img 
             className={styles[`image${index+1}`]} 
             key={index} 
             src={img} 
             alt={`${title}image${index+1}`} />
         ))}
-        </div>
-      )}
-      <div className={clsx({
-        [styles.textContainer]: true,
-        [styles.textContainerDesktop]: device.isDesktop,
-        [styles.textContainerOther]: other,
-        [styles.textContainerSmallMobile]: device.isSmallMobile
-      })}>
-        <h4 className={clsx({
-          [styles.title]: true,
-          [styles.hover]: isHovered  
+        </div>)}
+      {(title || description) && (
+        <div className={clsx({
+          [styles.textContainer]: true,
+          [styles.textContainerDesktop]: device.isDesktop,
+          [styles.textContainerOther]: other,
+          [styles.textContainerSmallMobile]: device.isSmallMobile
         })}>
-          {title}
-        </h4>
-        {description && <div className={clsx({
-          [styles.descriptionContainer]: true,
-          [styles[`desc${classNameSuffix}`]]: !isOpen
-          })}>
-          {description.map((desc, index) => (
-            <p key={index} className={styles.description}>{desc}</p>
-          ))}
-        </div>}
-      </div>
-      {text && <p className={styles.text}>{text}</p>}
-      {button && <button 
+          {title && (
+            <h4 className={clsx({
+              [styles.title]: true,
+              [styles.hover]: isHovered  
+            })}>
+            {title}
+            </h4>)}
+          {description && (
+            <div className={clsx({
+              [styles.descriptionContainer]: true,
+              [styles[`desc${classNameSuffix}`]]: !isOpen
+              })}>
+              {description.map((desc, index) => (
+                <p key={index} className={styles.description}>{desc}</p>
+              ))}
+            </div>)}
+        </div>)}
+      {text && (
+        <p className={styles.text}>
+          {text}
+        </p>)}
+      {button && (
+        <button 
           className={clsx({
             [styles.button]: true,
             [styles.hover]: isHovered
           })}
           onClick={isOpen ? closeItem : openItem}>
           {isOpen ? <Cross /> : <Plus />}
-        </button>}
+        </button>)}
     </div>
   );
 };
