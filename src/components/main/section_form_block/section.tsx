@@ -6,7 +6,7 @@ const FormBlock: FC = () => {
   return(
     <Article
       title={FormBlockData.title}
-      classNameSuffix={FormBlockData.classNameSuffix}
+      className={FormBlockData.className}
     />
   );
 };

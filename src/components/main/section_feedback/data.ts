@@ -1,4 +1,4 @@
-import { CardProps } from "../../ui-kit/card/type";
+import { CardProps } from "../../ui-kit/card/card";
 import User1 from "../../../assets/images/section3_user1.png";
 import User2 from "../../../assets/images/section3_user2.png";
 import User3 from "../../../assets/images/section3_user3.png";
@@ -11,7 +11,7 @@ const FeedbackCard: CardProps[] = [
       существующих паттернов поведения. В своём стремлении улучшить 
       пользовательский опыт мы `,
     description: ["Санкт-Петербург"],
-    images: [User1],
+    image: [User1],
   },
   { 
     title: "Иван Иванов", 
@@ -21,7 +21,7 @@ const FeedbackCard: CardProps[] = [
       мы упускаем, что активно развивающиеся страны третьего мира 
       призваны к ответу.`,
     description: ["Санкт-Петербург"],
-    images: [User2],
+    image: [User2],
   },
   { 
     title: "Артем Корнилов", 
@@ -29,7 +29,7 @@ const FeedbackCard: CardProps[] = [
       планирование предоставляет широкие возможности для анализа 
       существующих паттернов поведения.`,
     description: ["Самара"],
-    images: [User3],
+    image: [User3],
   },
   { 
     title: "Константинов Михаил Павлович", 
@@ -38,7 +38,7 @@ const FeedbackCard: CardProps[] = [
       существующих паттернов поведения. В своём стремлении улучшить 
       пользовательский опыт мы `,
     description: ["Санкт-Петербург"],
-    images: [User1],
+    image: [User1],
   },
   { 
     title: "Иван Иванов", 
@@ -48,7 +48,7 @@ const FeedbackCard: CardProps[] = [
       мы упускаем, что активно развивающиеся страны третьего мира 
       призваны к ответу.`,
     description: ["Санкт-Петербург"],
-    images: [User2],
+    image: [User2],
   },
   { 
     title: "Артем Корнилов", 
@@ -56,14 +56,14 @@ const FeedbackCard: CardProps[] = [
       планирование предоставляет широкие возможности для анализа 
       существующих паттернов поведения.`,
     description: ["Самара"],
-    images: [User3],
+    image: [User3],
   }
 ];
 
 const FeedbackData = {
+  className: "Feedback",
   title: "Отзывы",
-  card: FeedbackCard,
-  classNameSuffix: "Feedback",
+  cards: FeedbackCard
 };
 
 export default FeedbackData;

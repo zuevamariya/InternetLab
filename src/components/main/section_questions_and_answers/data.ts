@@ -1,16 +1,23 @@
-import { CardProps } from "../../ui-kit/card/type";
+import { CardProps, TButton } from "../../ui-kit/card/card";
+import { ReactComponent as Plus } from "../../../assets/images/section4_plus.svg";
+import { ReactComponent as Cross } from "../../../assets/images/section4_cross.svg";
+
+const buttonCard: TButton = {
+  openedElement: <Plus />,
+  closedElement: <Cross />
+};
 
 const QuestionsAndAnswersCard: CardProps[] = [
   { 
     title: `Подтверждено: сознание наших соотечественников не 
-    замутнено пропагандой?`, 
+    замутнено пропагандой?`,
     description: [`В частности, дальнейшее развитие различных форм 
       деятельности позволяет выполнить важные задания по разработке 
       дальнейших направлений развития. Предварительные выводы 
       неутешительны: экономическая повестка сегодняшнего дня 
       говорит о возможностях существующих финансовых и 
       административных условий.`],
-      button: true
+    button: buttonCard
   },
   { 
     title: `Прототип нового сервиса - это как трубный призыв?`, 
@@ -20,7 +27,7 @@ const QuestionsAndAnswersCard: CardProps[] = [
       неутешительны: экономическая повестка сегодняшнего дня 
       говорит о возможностях существующих финансовых и 
       административных условий.`],
-      button: true
+      button: buttonCard
   },
   { 
     title: `Частокол на границе продолжает удивлять?`, 
@@ -30,7 +37,7 @@ const QuestionsAndAnswersCard: CardProps[] = [
       неутешительны: экономическая повестка сегодняшнего дня 
       говорит о возможностях существующих финансовых и 
       административных условий.`],
-      button: true
+      button: buttonCard
   },
   { 
     title: `Очевидцы сообщают, что слышали грохот грома градущих изменений?`, 
@@ -40,7 +47,7 @@ const QuestionsAndAnswersCard: CardProps[] = [
       неутешительны: экономическая повестка сегодняшнего дня 
       говорит о возможностях существующих финансовых и 
       административных условий.`],
-      button: true
+      button: buttonCard
   },
   { 
     title: `И по сей день в центральных регионах звучит перекатами 
@@ -51,7 +58,7 @@ const QuestionsAndAnswersCard: CardProps[] = [
       неутешительны: экономическая повестка сегодняшнего дня 
       говорит о возможностях существующих финансовых и 
       административных условий.`],
-      button: true
+      button: buttonCard
   },
   { 
     title: `Нынче никто не может себе позволить инициировать треск 
@@ -62,7 +69,7 @@ const QuestionsAndAnswersCard: CardProps[] = [
       неутешительны: экономическая повестка сегодняшнего дня 
       говорит о возможностях существующих финансовых и 
       административных условий.`],
-      button: true
+      button: buttonCard
   },
   { 
     title: `Высококачественный прототип будущего проекта обнадёживает?`, 
@@ -72,14 +79,14 @@ const QuestionsAndAnswersCard: CardProps[] = [
       неутешительны: экономическая повестка сегодняшнего дня 
       говорит о возможностях существующих финансовых и 
       административных условий.`],
-      button: true
+    button: buttonCard
   },
 ];
 
 const QuestionsAndAnswersData = {
+  className: "QuestionsAndAnswers",
   title: "Вопросы и ответы",
-  card: QuestionsAndAnswersCard,
-  classNameSuffix: "QuestionsAndAnswers",
+  cards: QuestionsAndAnswersCard  
 };
 
 export default QuestionsAndAnswersData;

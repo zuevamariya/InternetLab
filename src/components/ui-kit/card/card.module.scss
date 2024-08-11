@@ -1,83 +1,51 @@
 @import "../../../variables.scss";
 
-.title {
-  font-weight: 600;
-  color: inherit;
-}
-
-.description {
-  font-weight: 400;
-  color: $darkgray-color;
-}
-
-.button {
-  border: none;
-  background-color: transparent;
-}
-
-.cardHowItWorksDesktop {
+.cardDesktopHowItWorks {
   display: grid;
 }
 
-.cardHowItWorksOther {
+.cardTabletHowItWorks,
+.cardMobileHowItWorks,
+.cardSmallMobileHowItWorks {
   display: flex;
 }
 
 .cardHowItWorks {
   gap: 10px;
 
-  .textContainer {
+  .article {
     display: flex;
     flex-direction: column;
   }
 
-  .textContainerDesktop {
+  .articleDesktop {
     max-width: 280px;
   }
 
-  .textContainerOther {
+  .articleTablet,
+  .articleMobile {
     max-width: 270px;
   }
 
-  .textContainerSmallMobile {
+  .articleSmallMobile {
     max-width: 216px;
-  }
-
-  .title {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  
-  .imageContainerDesktop {
-    width: 72px;
-    height: 72px;
-  }
-
-  .imageContainerOther {
-    width: 56px;
-    height: 56px;
-  }
-
-  .description {
-    font-size: 14px;
-    line-height: 24px;
   }
 }
 
-.cardThirdBlockDesktop,
-.cardThirdBlockTablet {
+.cardDesktopThirdBlock,
+.cardTabletThirdBlock {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
 }
 
-.cardThirdBlockMobile,
-.cardThirdBlockSmallMobile {
+.cardMobileThirdBlock,
+.cardSmallMobileThirdBlock {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .textContainer {
+  .article {
     text-align: center;
     order: 2;
   }
@@ -86,56 +54,19 @@
 .cardThirdBlock {
   gap: 32px;
 
-  .textContainer {
+  .article {
     display: grid;
     gap: 30px;
   }
-
-  .title {
-    font-size: 32px;
-    line-height: 40px;
-  }
-
-  .descriptionContainer {
-    display: grid;
-    gap: 20px;
-  }
-
-  .description {
-    font-size: 16px;
-    line-height: 28px;
-  }
-
-  .imageContainer {
-    width: 100%;
-    max-width: 582px;
-    aspect-ratio: 4 / 3;
-    order: 2;
-    position: relative;
-
-    img {
-      position: absolute;
-      inset: 0;
-      object-fit: cover;
-    }
-
-    .image1 {
-      z-index: 0;
-    }
-
-    .image2 {
-      z-index: 1;
-    }
-  }
 }
 
-.cardFeedbackDesktop,
-.cardFeedbackTablet {
+.cardDesktopFeedback,
+.cardTabletFeedback {
   height: 316px;
 }
 
-.cardFeedbackMobile,
-.cardFeedbackSmallMobile {
+.cardMobileFeedback,
+.cardSmallMobileFeedback {
   height: 100%;
 }
 
@@ -150,46 +81,24 @@
   padding: 15px;
   margin-block-end: 20px;
 
-  .textContainer {
+  .article {
     display: grid;
     gap: 7px;
   }
-
-  .title {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .description {
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .imageContainer {
-    width: 44px;
-    height: 44px;
-  }
-
-  .text {
-    grid-column: span 2;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-  }
 }
 
-.cardQuestionsAndAnswersMobile:first-child,
-.cardQuestionsAndAnswersSmallMobile:first-child {
+.cardMobileQuestionsAndAnswers:first-child,
+.cardSmallMobileQuestionsAndAnswers:first-child {
   border-block-start: none;
 }
 
-.cardQuestionsAndAnswersDesktop,
-.cardQuestionsAndAnswersTablet {
+.cardDesktopQuestionsAndAnswers,
+.cardTabletQuestionsAndAnswers {
   gap: 30px;
 }
 
-.cardQuestionsAndAnswersMobile,
-.cardQuestionsAndAnswersSmallMobile {
+.cardMobileQuestionsAndAnswers,
+.cardSmallMobileQuestionsAndAnswers {
   gap: 15px;
 }
 
@@ -203,31 +112,9 @@
   padding-block: 20px;
   width: 100%;
 
-  .textContainer {
+  .article {
     display: grid;
     gap: 20px;
-  }
-
-  .title {
-    font-size: 18px;
-    line-height: 32px;
-  }
-
-  .description {
-    font-size: 18px;
-    line-height: 32px;
-  }
-
-  .descQuestionsAndAnswers {
-    display: none;
-  }
-
-  .image2 {
-    display: none;
-  }
-
-  .hover {
-    color: $blue-color;
   }
 }
 
@@ -235,16 +122,4 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  .title {
-    font-size: 18px;
-    line-height: 32px;
-  }
-
-  .text {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 28px;
-  }
 }
-

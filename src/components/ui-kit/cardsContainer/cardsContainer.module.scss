@@ -1,0 +1,65 @@
+.listHowItWorks {
+  gap: 40px;
+}
+
+.listDesktopHowItWorks {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.listTabletHowItWorks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.listMobileHowItWorks,
+.listSmallMobileHowItWorks {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.listFeedback {
+  display: grid;
+}
+
+.listDesktopFeedback {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.listTabletFeedback {
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.listMobileFeedback,
+.listSmallMobileFeedback {
+  grid-template-columns: 1fr;
+}
+
+.listQuestionsAndAnswers {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.listCreditInfo {
+  gap: 20px;
+}
+
+.listDesktopCreditInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.listTabletCreditInfo,
+.listMobileCreditInfo,
+.listSmallMobileCreditInfo {
+  display: flex;
+  flex-direction: column;
+}
+

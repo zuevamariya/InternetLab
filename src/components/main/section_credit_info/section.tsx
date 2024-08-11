@@ -5,8 +5,8 @@ import CreditInfoData from "./data";
 const CreditInfo: FC = () => {
   return(
     <Article
-      card={CreditInfoData.card} 
-      classNameSuffix={CreditInfoData.classNameSuffix}
+      cards={CreditInfoData.cards} 
+      className={CreditInfoData.className}
     />
   );
 };

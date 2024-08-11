@@ -1,6 +1,6 @@
 const FormBlockData = {
-  title: "Отправь форму",
-  classNameSuffix: "FormBlock",
+  className: "FormBlock",
+  title: "Отправь форму"
 };
 
 export default FormBlockData;

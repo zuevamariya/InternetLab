@@ -5,9 +5,9 @@ import QuestionsAndAnswersData from "./data";
 const QuestionsAndAnswers: FC = () => {
   return(
     <Article
+      className={QuestionsAndAnswersData.className}
       title={QuestionsAndAnswersData.title} 
-      card={QuestionsAndAnswersData.card} 
-      classNameSuffix={QuestionsAndAnswersData.classNameSuffix}
+      cards={QuestionsAndAnswersData.cards}      
     />
   );
 };

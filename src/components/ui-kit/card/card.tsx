@@ -1,84 +1,83 @@
-import { FC, useState } from "react";
-import { CardProps } from "./type";
-import clsx from "clsx";
+import { FC, ReactElement, useState } from "react";
+import CardImage from "./cardImage/cardImage";
+import CardTitle from "./cardTitle/cardTitle";
 import styles from "./card.module.scss";
+import clsx from "clsx";
 import { RootState, useSelector } from "../../../services/store";
-import {ReactComponent as Plus} from "../../../assets/images/section4_plus.svg";
-import {ReactComponent as Cross} from "../../../assets/images/section4_cross.svg";
+import CardDescription from "./cardDescription/cardDescription";
+import CardText from "./cardText/cardText";
+import CardButton from "./cardButton/cardButton";
 
-const Card : FC<CardProps> = ( {title, description, text, images, classNameSuffix, button } ) => {
-  const device = useSelector((state: RootState) => state.device);
-  const other = device.isTablet || device.isMobile || device.isSmallMobile;
-  const[isOpen, setIsOpen] = useState<boolean>(false);
+export type TButton = {
+  closedElement: ReactElement;
+  openedElement: ReactElement;
+};
+
+export type CardProps = {
+  title: string;
+  className?: string;
+  image?: string[];
+  description?: string[];
+  text?: string;
+  button?: TButton;
+};
+
+const Card: FC<CardProps> = ({ 
+    title, 
+    className, 
+    image, 
+    description, 
+    text, 
+    button 
+  }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  
+  const[isOpen, setIsOpen] = useState<boolean>(false);
+  const device = useSelector((state: RootState) => state.device);
+
   const openItem = () => setIsOpen(true);
   const closeItem = () => setIsOpen(false);
 
   return(
-    <div className={clsx({
-      [styles[`card${classNameSuffix}Desktop`]]: classNameSuffix && device.isDesktop,
-      [styles[`card${classNameSuffix}Tablet`]]: classNameSuffix && device.isTablet,
-      [styles[`card${classNameSuffix}Mobile`]]: classNameSuffix && device.isMobile,
-      [styles[`card${classNameSuffix}SmallMobile`]]: classNameSuffix && device.isSmallMobile,
-      [styles[`card${classNameSuffix}Other`]]: classNameSuffix && other,
-      [styles[`card${classNameSuffix}`]]: classNameSuffix 
-    })}
-    onMouseEnter={() => setIsHovered(true)}
-    onMouseLeave={() => setIsHovered(false)}>
-      {images && (
-        <div className={clsx({
-          [styles.imageContainer]: true,
-          [styles.imageContainerDesktop]: device.isDesktop,
-          [styles.imageContainerOther]: other
+    <div
+      className={clsx({
+        [styles[`card${className}`]]: className,
+        [styles[`cardDesktop${className}`]]: device.isDesktop,
+        [styles[`cardTablet${className}`]]: device.isTablet,
+        [styles[`cardMobile${className}`]]: device.isMobile,
+        [styles[`cardSmallMobile${className}`]]: device.isSmallMobile
+      })}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {image && (
+        <CardImage image={image} title={title} className={className} />
+      )}
+      <article 
+        className={clsx(styles.article, {
+          [styles.articleDesktop]: device.isDesktop,
+          [styles.articleTablet]: device.isTablet,
+          [styles.articleMobile]: device.isMobile,
+          [styles.articleSmallMobile]: device.isSmallMobile
         })}>
-        {images.map((img, index) => (
-          <img 
-            className={styles[`image${index+1}`]} 
-            key={index} 
-            src={img} 
-            alt={`${title}image${index+1}`} />
-        ))}
-        </div>)}
-      {(title || description) && (
-        <div className={clsx({
-          [styles.textContainer]: true,
-          [styles.textContainerDesktop]: device.isDesktop,
-          [styles.textContainerOther]: other,
-          [styles.textContainerSmallMobile]: device.isSmallMobile
-        })}>
-          {title && (
-            <h4 className={clsx({
-              [styles.title]: true,
-              [styles.hover]: isHovered  
-            })}>
-            {title}
-            </h4>)}
-          {description && (
-            <div className={clsx({
-              [styles.descriptionContainer]: true,
-              [styles[`desc${classNameSuffix}`]]: !isOpen
-              })}>
-              {description.map((desc, index) => (
-                <p key={index} className={styles.description}>{desc}</p>
-              ))}
-            </div>)}
-        </div>)}
+        <CardTitle title={title} className={className} isHovered={isHovered} />
+        {description && (
+          <CardDescription description={description} className={className} isOpen={isOpen} />
+        )}
+      </article>
       {text && (
-        <p className={styles.text}>
-          {text}
-        </p>)}
+        <CardText text={text} className={className} />
+      )}
       {button && (
-        <button 
-          className={clsx({
-            [styles.button]: true,
-            [styles.hover]: isHovered
-          })}
-          onClick={isOpen ? closeItem : openItem}>
-          {isOpen ? <Cross /> : <Plus />}
-        </button>)}
+        <CardButton 
+          closedElement={button.closedElement} 
+          openedElement={button.openedElement} 
+          isHovered={isHovered} 
+          isOpen={isOpen} 
+          closeItem={closeItem} 
+          openItem={openItem} />
+        )}
     </div>
-  );
+  )
 };
 
 export default Card;

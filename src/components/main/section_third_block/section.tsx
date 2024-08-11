@@ -6,9 +6,9 @@ const ThirdBlock: FC = () => {
   return(
     <Card 
       title={ThirdBlockCard.title} 
+      className={ThirdBlockCard.className}
       description={ThirdBlockCard.description}
-      images={ThirdBlockCard.images} 
-      classNameSuffix={ThirdBlockCard.classNameSuffix}
+      image={ThirdBlockCard.image} 
     />
   );
 };

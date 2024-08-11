@@ -1,0 +1,41 @@
+@import "../../../../variables.scss";
+
+.description {
+  font-weight: 400;
+  color: $darkgray-color;
+}
+
+.descriptionHowItWorks {
+  .description{
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+.descriptionThirdBlock {
+  display: grid;
+  gap: 30px;
+
+  .description {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+.descriptionFeedback {
+  .description {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.descriptionQuestionsAndAnswers {
+  .description {
+    font-size: 18px;
+    line-height: 32px;
+  }
+}
+
+.hiddenTextQuestionsAndAnswers {
+  display: none;
+}

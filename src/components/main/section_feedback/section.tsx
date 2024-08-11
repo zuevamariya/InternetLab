@@ -17,7 +17,7 @@ const Feedback: FC = () => {
   const[currentSlide, setCurrentSlide] = useState<number>(0);
   const [cardsPerSlide, setCardsPerSlide] = useState<number>(1);
 
-  const totalCards = FeedbackData.card.length;
+  const totalCards = FeedbackData.cards.length;
   const totalSlides = Math.ceil(totalCards / cardsPerSlide);
 
   const handleResize = () => {
@@ -67,8 +67,8 @@ const Feedback: FC = () => {
         )}
         <Article 
           title={FeedbackData.title} 
-          card={FeedbackData.card.slice(currentSlide * cardsPerSlide, (currentSlide + 1) * cardsPerSlide)}
-          classNameSuffix={FeedbackData.classNameSuffix}
+          cards={FeedbackData.cards.slice(currentSlide * cardsPerSlide, (currentSlide + 1) * cardsPerSlide)}
+          className={FeedbackData.className}
         />
         {device.isDesktop && (
           <button 

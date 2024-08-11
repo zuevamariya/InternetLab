@@ -5,9 +5,9 @@ import HowItWorksData from "./data";
 const HowItWorks: FC = () => {
   return(
     <Article
+      className={HowItWorksData.className}
       title={HowItWorksData.title} 
-      card={HowItWorksData.card} 
-      classNameSuffix={HowItWorksData.classNameSuffix}
+      cards={HowItWorksData.cards}
     />
   );
 };

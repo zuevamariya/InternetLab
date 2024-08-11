@@ -1,0 +1,47 @@
+.imageDesktopHowItWorks {
+  width: 72px;
+  height: 72px;
+}
+
+.imageTabletHowItWorks,
+.imageMobileHowItWorks,
+.imageSmallMobileHowItWorks {
+  width: 56px;
+  height: 56px;
+}
+
+.imageDesktopThirdBlock,
+.imageTabletThirdBlock,
+.imageMobileThirdBlock,
+.imageSmallMobileThirdBlock {
+  width: 100%;
+  max-width: 582px;
+  aspect-ratio: 4 / 3;
+  order: 2;
+  position: relative;
+
+  img {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+  }
+
+  .image1 {
+    z-index: 0;
+  }
+
+  .image2 {
+    z-index: 1;
+  }
+}
+
+.imageDesktopFeedback,
+.imageTabletFeedback,
+.imageMobileFeedback,
+.imageSmallMobileFeedback {
+  width: 44px;
+  height: 44px;
+}
+
+
+

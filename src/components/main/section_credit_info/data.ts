@@ -1,4 +1,4 @@
-import { CardProps } from "../../ui-kit/card/type";
+import { CardProps } from "../../ui-kit/card/card";
 
 const CreditInfoCard: CardProps[] = [
   { 
@@ -44,8 +44,8 @@ const CreditInfoCard: CardProps[] = [
 ];
 
 const CreditInfoData = {
-  card: CreditInfoCard,
-  classNameSuffix: "CreditInfo",
+  className: "CreditInfo",
+  cards: CreditInfoCard
 };
 
 export default CreditInfoData;

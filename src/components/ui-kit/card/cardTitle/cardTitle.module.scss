@@ -1,0 +1,35 @@
+@import "../../../../variables.scss";
+
+.title {
+  font-weight: 600;
+  color: inherit;
+}
+
+.titleHowItWorks {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.titleThirdBlock {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.titleFeedback {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.titleQuestionsAndAnswers {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.titleCreditInfo {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.hoverQuestionsAndAnswers {
+  color: $blue-color;
+}
