@@ -1,0 +1,23 @@
+@import "../../../variables.scss";
+
+.inputContainer {
+  display: flex;
+  gap: 30px;
+
+  input {
+    background-color: $extralightgray-color;
+    border: none;
+    height: 64px;
+    width: clamp(18rem, 16.8rem + 6vw, 24rem);
+  }
+}
+
+.inputContainerDesktop,
+.inputContainerTablet {
+  display: flex;
+}
+
+.inputContainerMobile,
+.inputContainerSmallMobile {
+  display: grid;
+}

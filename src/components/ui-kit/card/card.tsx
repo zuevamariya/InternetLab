@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from "react";
+import { FC, useState } from "react";
 import CardImage from "./cardImage/cardImage";
 import CardTitle from "./cardTitle/cardTitle";
 import styles from "./card.module.scss";
@@ -6,12 +6,7 @@ import clsx from "clsx";
 import { RootState, useSelector } from "../../../services/store";
 import CardDescription from "./cardDescription/cardDescription";
 import CardText from "./cardText/cardText";
-import CardButton from "./cardButton/cardButton";
-
-export type TButton = {
-  closedElement: ReactElement;
-  openedElement: ReactElement;
-};
+import ToggleButton from "./cardButtonToggle/cardButtonToggle";
 
 export type CardProps = {
   title: string;
@@ -19,7 +14,7 @@ export type CardProps = {
   image?: string[];
   description?: string[];
   text?: string;
-  button?: TButton;
+  button?: boolean;
 };
 
 const Card: FC<CardProps> = ({ 
@@ -68,9 +63,7 @@ const Card: FC<CardProps> = ({
         <CardText text={text} className={className} />
       )}
       {button && (
-        <CardButton 
-          closedElement={button.closedElement} 
-          openedElement={button.openedElement} 
+        <ToggleButton
           isHovered={isHovered} 
           isOpen={isOpen} 
           closeItem={closeItem} 

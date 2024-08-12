@@ -7,6 +7,7 @@ const FormBlock: FC = () => {
     <Article
       title={FormBlockData.title}
       className={FormBlockData.className}
+      form={FormBlockData.form}
     />
   );
 };
