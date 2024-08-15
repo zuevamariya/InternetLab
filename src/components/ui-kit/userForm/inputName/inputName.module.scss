@@ -1,0 +1,104 @@
+@import "../../../../variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 64px;
+  width: 100%;
+  background-color: $extralightgray-color;
+
+  span {
+    color: $red-color;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+}
+
+.inputContainer {
+  border-radius: 5px;
+  height: 64px;
+  display: grid;
+}
+
+.inputFull {
+  align-items: center;
+  grid-template-columns: 1fr min-content;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 5px;
+  padding-inline: 10px;
+
+  .label {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    color: $gray-color;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  input {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  .validationIcon {
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+}
+
+.inputNotFull {
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  color: $darkgray-color;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  top: 20px;
+}
+
+.validationIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.visibility {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+input {
+  background-color: $extralightgray-color;
+  border: none;
+  color: $black-color;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+input:focus,
+input:focus-visible {
+  outline: none;
+  background-color: $white-color;
+  border: none;
+}
+
+.inputContainer:focus-within {
+  border: 2px solid $lightgray-color;
+  background-color: $white-color;
+}
+
+.inputError:focus-within {
+  border: 2px solid $red-color;
+}
+
+.inputEmpty:focus-within {
+  border: 2px solid $midgray-color;
+}
