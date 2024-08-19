@@ -1,29 +1,29 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { FC, FormEvent } from "react";
 import styles from "./userForm.module.scss";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../services/store";
-import InputName from "./inputName/inputName";
+import TextInput from "./textInput/textInput";
+import CheckboxInput from "./checkboxInput/checkboxInput";
+import Button from "../button/button";
 
 const UserForm: FC = () => {
-  const[phoneInput, setPhoneInput] = useState<string>("");
-  const[checkboxInput, setCheckboxInput] = useState<boolean>(false);
   const device = useSelector((state: RootState) => state.device);
-  const [phoneError, setPhoneError] = useState<string>("");
 
-  const handlePhoneInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setPhoneInput(value);
-    const phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(value)) {
-      setPhoneError("Телефон должен содержать 10 цифр");
-    } else {
-      setPhoneError("");
-    }
+  function validateName(input: string) {
+    const isValidFormat = /^[A-ZА-ЯЁ][a-zA-Zа-яёА-ЯЁ]*$/.test(input);
+
+    const isValidLength =input.length >= 2;
+
+    return isValidFormat && isValidLength;
   };
 
-  const handleCheckboxInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setCheckboxInput(event.target.checked);    
+  function validateTel(input: string) {
+    const cleaned = input.replace(/[\s()-]/g, '');
+
+    const phoneRegex = /^(\+7|8)?\d{10}$/;
+
+    return phoneRegex.test(cleaned);
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -39,29 +39,29 @@ const UserForm: FC = () => {
         [styles.formMobile]: device.isMobile,
         [styles.formSmallMobile]: device.isSmallMobile
       })}>
-      <InputName />
-      <input 
-        type="text"
-        name="phoneInput"
-        placeholder="Телефон"
-        value={phoneInput}
-        onChange={handlePhoneInputChange}
+      <TextInput 
+        type={"text"}
+        name={"nameInput"}
+        label={"Имя"} 
+        message={`Имя должно состоять  только из букв, 
+          содержать не менее 2 символов 
+          и начинаться с большой буквы`}
+        checkInput={validateName}/>
+      <TextInput
+        type={"tel"}
+        name={"telInput"}
+        label={"Телефон"}
+        message={`Номер телефона формата +7(XXX)-XXX-XX-XX
+          или 8(XXX)-XXX-XX-XX`}
+        checkInput={validateTel}
       />
-      <div className={styles.checkboxContainer}>
-        <input 
-          id="checkboxInput"
-          type="checkbox"
-          name="checkboxInput"
-          checked={checkboxInput}
-          onChange={handleCheckboxInputChange}
-        />
-        <label htmlFor="checkboxInput">
-          Согласен, отказываюсь
-        </label>
-      </div>
-      <button type="submit">
-        Отправить
-      </button>    
+      <CheckboxInput
+        id={"checkboxInput"}
+        type={"checkbox"}
+        name={"checkboxInput"}
+        label={"Я соглашаюсь"}
+      />
+      <Button text={"Отправить"} type={"submit"} disabled={true}/> 
     </form>
   )
 };

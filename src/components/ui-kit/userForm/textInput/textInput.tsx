@@ -1,34 +1,42 @@
 import { ChangeEvent, FC, useState } from "react";
-import styles from "./inputName.module.scss";
+import styles from "./textInput.module.scss";
 import {ReactComponent as InputOk} from "../../../../assets/images/input_ok.svg";
 import {ReactComponent as InputError} from "../../../../assets/images/input_error.svg";
 import clsx from "clsx";
-import { RootState, useSelector } from "../../../../services/store";
 
-const InputName: FC = () => {
-  const[nameInput, setNameInput] = useState<string>("");
-  const [nameError, setNameError] = useState<string>("");
+type TextInputProps = {
+  type: string;
+  name: string;
+  label: string;
+  message: string;
+  checkInput: (input: string) => boolean;
+};
+
+const TextInput: FC<TextInputProps> = ({ type, name, label, message, checkInput }) => {
+  const [input, setInput] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const isEmptyInput = nameInput.length == 0;
-  const isFullInput = nameInput.length !== 0;
+  
+  const isEmptyInput = input.length == 0;
+  const isFullInput = input.length !== 0;
   const isInput = isFullInput || isFocused;
 
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+  const handleFocus = () => {
     setIsFocused(true);
   };
 
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+  const handleBlur = () => {
     setIsFocused(false);
   };
 
   const handleNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setNameInput(value);
+    setInput(value);
 
-    if (value.length < 2 && value.length !== 0) {
-      setNameError("Имя должно содержать не менее 2 символов");
+    if (!checkInput(value)) {
+      setError(message);
     } else {
-      setNameError("");
+      setError("");
     }   
   };
 
@@ -37,7 +45,7 @@ const InputName: FC = () => {
       <div className={clsx(styles.inputContainer, {
         [styles.inputNotFull]: !isInput,
         [styles.inputFull]: isInput,
-        [styles.inputError]: nameError,
+        [styles.inputError]: error,
         [styles.inputEmpty]: isEmptyInput,
       })}
         onFocus={handleFocus}
@@ -47,27 +55,28 @@ const InputName: FC = () => {
           className={clsx({
             [styles.label]: isInput,
         })}>
-          Имя
+          {label}
         </label>
         <input 
-          type="text"
-          name="nameInput"
-          value={nameInput}
+          type={type}
+          name={name}
+          value={input}
           onChange={handleNameInputChange}
           required
         /> 
         <InputError className={clsx(styles.validationIcon, {
-          [styles.hidden]: !nameError || isEmptyInput,
+          [styles.hidden]: !error || isEmptyInput,
         })} />
         <InputOk className={clsx(styles.validationIcon, {
-          [styles.hidden]: nameError || isEmptyInput,
+          [styles.hidden]: error || isEmptyInput,
         })} />
       </div>
-      {(isInput && nameError) && (<span>
-        {nameError}
+      {(isInput && error) && (
+      <span>
+        {error}
       </span>)}
     </div>
   )
 };
 
-export default InputName;
+export default TextInput;

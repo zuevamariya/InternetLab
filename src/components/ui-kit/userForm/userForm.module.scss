@@ -5,6 +5,17 @@
   gap: 40px;
   width: clamp(18rem, 11.6rem + 32vw, 50rem);
   align-items: center;
+
+  button {
+    height: 64px;
+    width: clamp(18rem, 16.8rem + 6vw, 24rem);
+    background-color: $blue-color;
+    color: $white-color;
+  }
+  
+  button:hover {
+    background-color: $blue_hover-color; 
+  }
 }
 
 .formDesktop,
@@ -18,87 +29,4 @@
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: 1fr;
 }
-
-// .inputContainer {
-//   display: flex;
-//   gap: 20px;
-//   margin-block-end: 20px;
-
-//   input {
-//     background-color: $extralightgray-color;
-//     border: none;
-//     height: 64px;
-//     width: clamp(18rem, 16.8rem + 6vw, 24rem);
-//     padding: 15px;
-//     color: $black-color;
-//     font-size: 18px;
-//     font-weight: 400;
-//     line-height: 32px;
-//   }
-// }
-
-// .inputContainerDesktop,
-// .inputContainerTablet,
-// .clickContainerDesktop,
-// .clickContainerTablet {
-//   display: flex;
-//   justify-content: space-between;
-// }
-
-// .inputContainerMobile,
-// .inputContainerSmallMobile,
-// .clickContainerMobile,
-// .clickContainerSmallMobile {
-//   display: grid;
-// }
-
-// input::placeholder {
-//   color: $darkgray-color;
-//   font-size: 18px;
-//   font-weight: 400;
-//   line-height: 32px;
-// }
-
-// .checkboxContainer {
-//   display: flex;
-//   align-items: center;
-//   gap: 10px;
-// }
-
-// .clickContainer {
-//   gap: 20px;
-
-//   input {
-//     width: 24px;
-//     height: 24px;
-//     border: 2px solid $midgray-color;
-//   }
-
-//   input:checked {
-//     background-color: $blue-color;
-//   }
-
-//   label {
-//     font-size: 16px;
-//     font-weight: 400;
-//     line-height: 28px;
-//   }
-
-//   button {
-//     height: 64px;
-//     width: clamp(18rem, 16.8rem + 6vw, 24rem);
-//     border: none;
-//     border-radius: 5px;
-//     background-color: $blue-color;
-//     color: $white-color;
-//     font-size: 20px;
-//     font-weight: 600;
-//     line-height: 24px;
-//     text-align: center;
-//   }
-  
-//   button:hover {
-//     background-color: $blue_hover-color; 
-//   }
-// }
 

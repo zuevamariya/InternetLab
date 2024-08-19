@@ -9,6 +9,7 @@ import {ReactComponent as CrossRight} from "../../assets/images/cross_right.svg"
 import {ReactComponent as CrossLeft} from "../../assets/images/cross_left.svg";
 import clsx from "clsx";
 import { RootState, useSelector } from "../../services/store";
+import Button from "../ui-kit/button/button";
 
 const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -123,9 +124,7 @@ const Header: FC = () => {
               )}>
                 Сделай круто тестовое задание и у тебя получится
               </p>
-              <button className={styles.button}>
-                Проще простого!
-              </button>
+              <Button text={"Проще простого!"}/>
             </article>
         </div>
       )}
