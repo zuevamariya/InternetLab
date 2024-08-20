@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import deviceReducer from "./device/device-slice";
+import formReducer from "./form/form-slice";
 
 import {
   TypedUseSelectorHook,
@@ -9,6 +10,7 @@ import {
 
 export const rootReducer = combineReducers({
   device: deviceReducer,
+  form: formReducer,
 });
 
 const store = configureStore({

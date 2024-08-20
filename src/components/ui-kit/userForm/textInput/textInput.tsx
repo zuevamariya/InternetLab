@@ -3,6 +3,8 @@ import styles from "./textInput.module.scss";
 import {ReactComponent as InputOk} from "../../../../assets/images/input_ok.svg";
 import {ReactComponent as InputError} from "../../../../assets/images/input_error.svg";
 import clsx from "clsx";
+import { useDispatch } from "../../../../services/store";
+import { setInputName, setInputTel } from "../../../../services/form/form-slice";
 
 type TextInputProps = {
   type: string;
@@ -16,6 +18,8 @@ const TextInput: FC<TextInputProps> = ({ type, name, label, message, checkInput 
   const [input, setInput] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [isFocused, setIsFocused] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
   
   const isEmptyInput = input.length == 0;
   const isFullInput = input.length !== 0;
@@ -32,12 +36,18 @@ const TextInput: FC<TextInputProps> = ({ type, name, label, message, checkInput 
   const handleNameInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInput(value);
+    if (label === "Имя") {
+      dispatch(setInputName(value));
+    } else if (label === "Телефон") {
+      dispatch(setInputTel(value));
+    };
+    
 
     if (!checkInput(value)) {
       setError(message);
     } else {
       setError("");
-    }   
+    };
   };
 
   return(

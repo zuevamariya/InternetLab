@@ -2,13 +2,16 @@ import { FC, FormEvent } from "react";
 import styles from "./userForm.module.scss";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../services/store";
+import { RootState, useDispatch } from "../../../services/store";
 import TextInput from "./textInput/textInput";
 import CheckboxInput from "./checkboxInput/checkboxInput";
 import Button from "../button/button";
+import { getInputCheckbox, getInputName, getInputTel } from "../../../services/form/form-slice";
+import { submitForm } from "../../../services/form/form-action";
 
 const UserForm: FC = () => {
   const device = useSelector((state: RootState) => state.device);
+  const dispatch = useDispatch();
 
   function validateName(input: string) {
     const isValidFormat = /^[A-ZА-ЯЁ][a-zA-Zа-яёА-ЯЁ]*$/.test(input);
@@ -28,6 +31,12 @@ const UserForm: FC = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const formData = {
+      inputName: useSelector(getInputName),
+      inputTel: useSelector(getInputTel),
+      inputCheckbox: useSelector(getInputCheckbox),
+    };
+    dispatch(submitForm(formData));
   };
 
   return(
@@ -61,7 +70,7 @@ const UserForm: FC = () => {
         name={"checkboxInput"}
         label={"Я соглашаюсь"}
       />
-      <Button text={"Отправить"} type={"submit"} disabled={true}/> 
+      <Button text={"Отправить"} type={"submit"} disabled={false}/> 
     </form>
   )
 };

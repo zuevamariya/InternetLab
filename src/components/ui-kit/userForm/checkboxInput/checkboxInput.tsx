@@ -1,5 +1,7 @@
 import { ChangeEvent, FC, useState } from "react";
 import styles from "./checkboxInput.module.scss";
+import { useDispatch } from "../../../../services/store";
+import { setInputCheckbox } from "../../../../services/form/form-slice";
 
 type CheckboxInputProps = {
   id: string;
@@ -11,8 +13,12 @@ type CheckboxInputProps = {
 const CheckboxInput: FC<CheckboxInputProps> = ({ id, type, name, label }) => {
   const[checkboxInput, setCheckboxInput] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
+
   const handleCheckboxInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setCheckboxInput(event.target.checked);    
+    const value = event.target.checked;
+    setCheckboxInput(value);
+    dispatch(setInputCheckbox(value));
   };
 
   return(
